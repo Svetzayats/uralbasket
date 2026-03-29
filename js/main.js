@@ -54,14 +54,17 @@ function highlightActiveLink() {
     const href = link.getAttribute('href');
     if (!href) return;
 
-    // Exact match, or root path for home
-    const isHome    = (path === '/' || path.endsWith('/index.html')) && (href === '/' || href === '/index.html');
-    const isBlog    = path.includes('/blog') && href.includes('/blog');
-    const isExact   = path.endsWith(href) || path === href;
+    let active = false;
 
-    if (isHome || isBlog || isExact) {
-      link.classList.add('is-active');
-      link.setAttribute('aria-current', 'page');
+    if (href === '/' || href === '/index.html') {
+      active = path === '/' || path === '/index.html';
+    } else if (href.startsWith('/blog')) {
+      active = path.startsWith('/blog');
+    } else {
+      active = path === href;
     }
+
+    link.classList.toggle('is-active', active);
+    if (active) link.setAttribute('aria-current', 'page');
   });
 }

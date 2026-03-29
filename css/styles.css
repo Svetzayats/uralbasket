@@ -1016,3 +1016,211 @@ main {
   color: var(--color-olive);
 }
 
+/* ============================================================
+   Blog — post grid (index page)
+   ============================================================ */
+.post-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 640px) {
+  .post-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .post-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.post-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+/* Card image — top of card, fixed aspect ratio */
+.post-card-img-link {
+  display: block;
+  flex-shrink: 0;
+}
+
+.post-card-img-wrap {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background-color: var(--color-surface-alt);
+}
+
+.post-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+  color: transparent;
+}
+
+.post-card-img-link:hover .post-card-img {
+  transform: scale(1.04);
+}
+
+/* Card body — grows to fill remaining height */
+.post-card-body {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+.post-date {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.post-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.post-title a {
+  color: var(--color-text);
+  transition: color var(--transition);
+}
+
+.post-title a:hover {
+  color: var(--color-olive);
+}
+
+.post-summary {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  flex: 1;
+  margin: 0;
+}
+
+.post-read-more {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: color var(--transition);
+  margin-top: var(--space-xs);
+}
+
+.post-read-more:hover {
+  color: var(--color-olive);
+}
+
+/* ============================================================
+   Blog — article page
+   ============================================================ */
+.article-container {
+  max-width: 720px;
+}
+
+.article-header {
+  margin-bottom: var(--space-xl);
+}
+
+.article-back {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+  transition: color var(--transition);
+}
+
+.article-back:hover {
+  color: var(--color-primary);
+}
+
+.article-header .post-date {
+  margin-bottom: var(--space-sm);
+}
+
+.article-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.15;
+}
+
+/* Cover image */
+.article-cover-wrap {
+  margin-bottom: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-surface-alt);
+  aspect-ratio: 16 / 7;
+}
+
+.article-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  color: transparent;
+}
+
+/* Prose — long-form reading typography */
+.prose {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.prose p {
+  margin-bottom: var(--space-lg);
+}
+
+.prose h2 {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-md);
+}
+
+.prose ul,
+.prose ol {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: var(--space-lg);
+}
+
+.prose li {
+  margin-bottom: var(--space-sm);
+}
+
+.prose a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  color: var(--color-olive);
+}
+
+/* Article footer */
+.article-footer {
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
