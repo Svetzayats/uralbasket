@@ -27,6 +27,7 @@ async function initCatalog() {
   renderCards(grid, products);
   initLightbox();
   initFilter(products);
+  initOrderModal();
 }
 
 /* ------------------------------------------------------------------
@@ -100,6 +101,88 @@ function initFilter(products) {
       });
     });
   });
+}
+
+/* ------------------------------------------------------------------
+   Order modal
+------------------------------------------------------------------ */
+function initOrderModal() {
+  const modal        = document.getElementById('order-modal');
+  const form         = document.getElementById('order-form');
+  const closeBtn     = modal.querySelector('.modal-close');
+  const productInput = document.getElementById('order-product');
+  const titleEl      = document.getElementById('modal-title');
+  const successEl    = document.getElementById('order-success');
+
+  if (!modal || !form) return;
+
+  // Open — event delegation so it works on dynamically rendered buttons
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.order-btn');
+    if (!btn) return;
+
+    const name = btn.dataset.product || '';
+    titleEl.textContent = name ? `Заказать: ${name}` : 'Оформить заказ';
+
+    form.reset();
+    productInput.value = name;   // restore after reset
+    form.hidden  = false;
+    successEl.hidden = true;
+
+    const submitBtn = form.querySelector('.form-submit');
+    submitBtn.disabled    = false;
+    submitBtn.textContent = 'Отправить заявку';
+
+    openModal(modal);
+  });
+
+  // Close — backdrop click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal(modal);
+  });
+
+  // Close — button
+  closeBtn.addEventListener('click', () => closeModal(modal));
+
+  // Close — Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.hidden) closeModal(modal);
+  });
+
+  // Submit via Formspree AJAX
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('.form-submit');
+    submitBtn.disabled    = true;
+    submitBtn.textContent = 'Отправляем…';
+
+    try {
+      const res = await fetch(form.action, {
+        method:  'POST',
+        body:    new FormData(form),
+        headers: { 'Accept': 'application/json' },
+      });
+      if (!res.ok) throw new Error();
+      form.hidden     = true;
+      successEl.hidden = false;
+    } catch {
+      submitBtn.disabled    = false;
+      submitBtn.textContent = 'Отправить заявку';
+      alert('Не удалось отправить заявку. Попробуйте ещё раз или свяжитесь с нами напрямую.');
+    }
+  });
+}
+
+function openModal(modal) {
+  modal.hidden = false;
+  document.body.style.overflow = 'hidden';
+  const first = modal.querySelector('input:not([type=hidden])');
+  if (first) first.focus();
+}
+
+function closeModal(modal) {
+  modal.hidden = true;
+  document.body.style.overflow = '';
 }
 
 /* ------------------------------------------------------------------
