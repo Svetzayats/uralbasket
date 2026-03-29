@@ -25,6 +25,7 @@ async function initCatalog() {
   }
 
   renderCards(grid, products);
+  initLightbox();
   initFilter(products);
 }
 
@@ -44,11 +45,18 @@ function cardHTML(product) {
   return `
     <article class="product-card" data-category="${esc(product.category)}" data-id="${esc(product.id)}">
       <div class="product-img-wrap">
-        <img
-          src="/images/products/${esc(product.image)}"
-          alt="${esc(product.name)}"
-          class="product-img"
-        />
+        <a
+          href="/images/products/${esc(product.image)}"
+          class="glightbox"
+          data-title="${esc(product.name)}"
+          aria-label="Увеличить фото: ${esc(product.name)}"
+        >
+          <img
+            src="/images/products/${esc(product.image)}"
+            alt="${esc(product.name)}"
+            class="product-img"
+          />
+        </a>
       </div>
       <div class="product-body">
         <h3 class="product-name">${esc(product.name)}</h3>
@@ -56,6 +64,18 @@ function cardHTML(product) {
         ${orderBtn}
       </div>
     </article>`;
+}
+
+/* ------------------------------------------------------------------
+   Lightbox
+------------------------------------------------------------------ */
+function initLightbox() {
+  GLightbox({
+    selector:    '.glightbox',
+    touchNavigation: true,
+    loop:        false,
+    zoomable:    false,
+  });
 }
 
 /* ------------------------------------------------------------------
