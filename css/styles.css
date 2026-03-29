@@ -2,16 +2,19 @@
    Design Tokens
    ============================================================ */
 :root {
-  /* Colors */
-  --color-bg:           #faf6f1;
-  --color-surface:      #f2e8d9;
-  --color-surface-alt:  #e8ddd0;
-  --color-primary:      #7c5230;
-  --color-primary-dark: #6a4428;
-  --color-accent:       #b87040;
-  --color-text:         #2e241a;
-  --color-text-muted:   #6b5a4a;
-  --color-border:       #ddd0be;
+  /* Colors — Forest Parchment palette */
+  --color-bg:           #EFF1ED;  /* Parchment */
+  --color-surface:      #E2E6D8;  /* Parchment warmed */
+  --color-surface-alt:  #BCBD8B;  /* Dry Sage */
+  --color-primary:      #373D20;  /* Dark Khaki */
+  --color-primary-dark: #252910;  /* Dark Khaki darkened */
+  --color-accent:       #766153;  /* Ash Brown */
+  --color-accent-dark:  #5e4d42;  /* Ash Brown darkened */
+  --color-olive:        #717744;  /* Dusty Olive */
+  --color-sage:         #BCBD8B;  /* Dry Sage */
+  --color-text:         #373D20;  /* Dark Khaki */
+  --color-text-muted:   #717744;  /* Dusty Olive */
+  --color-border:       #BCBD8B;  /* Dry Sage */
   --color-white:        #ffffff;
 
   /* Typography */
@@ -458,5 +461,122 @@ main {
 @media (min-width: 1024px) {
   :root {
     --container-padding: 2rem;
+  }
+}
+
+/* ============================================================
+   Hero section
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+  /* Gradient shown while image loads or when hero.jpg is not yet placed */
+  background-color: var(--color-primary);
+  background-image: linear-gradient(
+    135deg,
+    #1e2210 0%,
+    #373D20 45%,
+    #717744 100%
+  );
+  overflow: hidden;
+  color: var(--color-white);
+}
+
+/* Background photo — place /images/hero.jpg to activate */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  /* Hide the broken-image icon when file is missing */
+  color: transparent;
+}
+
+/* Dark gradient overlay so text stays readable over the photo */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(55, 61, 32, 0.84) 0%,
+    rgba(55, 61, 32, 0.55) 55%,
+    rgba(55, 61, 32, 0.18) 100%
+  );
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--space-3xl);
+}
+
+.hero-content {
+  max-width: 580px;
+}
+
+.hero-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-md);
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  line-height: 1.12;
+  color: var(--color-white);
+  margin-bottom: var(--space-lg);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: var(--space-xl);
+  max-width: 46ch;
+}
+
+.hero-cta {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-size: 1rem;
+  padding: 0.85rem 2.2rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  transition: background-color var(--transition), box-shadow var(--transition);
+  display: inline-block;
+  border: 2px solid transparent;
+}
+
+.hero-cta:hover {
+  background-color: var(--color-accent-dark);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 70vh;
+    align-items: flex-end;
+    padding-bottom: var(--space-xl);
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(55, 61, 32, 0.90) 0%,
+      rgba(55, 61, 32, 0.52) 60%,
+      rgba(55, 61, 32, 0.12) 100%
+    );
+  }
+
+  .hero-content {
+    max-width: 100%;
   }
 }
