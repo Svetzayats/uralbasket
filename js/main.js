@@ -61,7 +61,9 @@ function highlightActiveLink() {
     } else if (href.startsWith('/blog')) {
       active = path.startsWith('/blog');
     } else {
-      active = path === href;
+      // Match both /about.html and /about (extensionless, as served by dev servers)
+      const hrefBase = href.replace(/\.html$/, '');
+      active = path === href || path === hrefBase;
     }
 
     link.classList.toggle('is-active', active);

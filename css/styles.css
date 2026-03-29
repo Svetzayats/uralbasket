@@ -1,20 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
 /* ============================================================
    Design Tokens
    ============================================================ */
 :root {
-  /* Colors — Forest Parchment palette */
-  --color-bg:           #EFF1ED;  /* Parchment */
-  --color-surface:      #E2E6D8;  /* Parchment warmed */
-  --color-surface-alt:  #BCBD8B;  /* Dry Sage */
-  --color-primary:      #373D20;  /* Dark Khaki */
-  --color-primary-dark: #252910;  /* Dark Khaki darkened */
-  --color-accent:       #766153;  /* Ash Brown */
-  --color-accent-dark:  #5e4d42;  /* Ash Brown darkened */
-  --color-olive:        #717744;  /* Dusty Olive */
-  --color-sage:         #BCBD8B;  /* Dry Sage */
-  --color-text:         #373D20;  /* Dark Khaki */
-  --color-text-muted:   #717744;  /* Dusty Olive */
-  --color-border:       #BCBD8B;  /* Dry Sage */
+  /* Colors — Warm Forest palette */
+  --color-bg:           #EFF2EA;  /* Pale Meadow */
+  --color-surface:      #E4EAD9;  /* Soft Fern */
+  --color-surface-alt:  #B8C9A3;  /* Sage Green */
+  --color-primary:      #2D4A1E;  /* Deep Forest Green */
+  --color-primary-dark: #1E3313;  /* Forest Green darkened */
+  --color-accent:       #8B5E3C;  /* Warm Clay */
+  --color-accent-dark:  #6E4A2E;  /* Clay darkened */
+  --color-olive:        #5A7A3A;  /* Olive Green */
+  --color-sage:         #93AE7E;  /* Sage */
+  --color-text:         #1E2B14;  /* Dark Forest Brown */
+  --color-text-muted:   #5A6E4A;  /* Muted Olive */
+  --color-border:       #C4D3B0;  /* Soft Green Border */
   --color-white:        #ffffff;
 
   /* Typography */
@@ -40,9 +42,9 @@
   --radius-lg: 16px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 4px rgba(46, 36, 26, 0.08);
-  --shadow-md: 0 4px 16px rgba(46, 36, 26, 0.10);
-  --shadow-lg: 0 8px 32px rgba(46, 36, 26, 0.14);
+  --shadow-sm: 0 1px 3px rgba(44, 36, 22, 0.06), 0 1px 8px rgba(44, 36, 22, 0.06);
+  --shadow-md: 0 4px 12px rgba(44, 36, 22, 0.10), 0 1px 4px rgba(44, 36, 22, 0.06);
+  --shadow-lg: 0 12px 36px rgba(44, 36, 22, 0.15), 0 2px 8px rgba(44, 36, 22, 0.08);
 
   /* Transitions */
   --transition: 0.2s ease;
@@ -152,8 +154,10 @@ main {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
+  background-color: rgba(239, 242, 234, 0.93);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(196, 211, 176, 0.8);
   box-shadow: var(--shadow-sm);
 }
 
@@ -250,8 +254,8 @@ main {
    Footer
    ============================================================ */
 .site-footer {
-  background-color: var(--color-surface);
-  border-top: 1px solid var(--color-border);
+  background-color: #1E3313;
+  border-top: none;
   padding-block: var(--space-2xl);
   margin-top: auto;
 }
@@ -266,11 +270,16 @@ main {
 .footer-brand .site-logo {
   display: inline-block;
   margin-bottom: var(--space-sm);
+  color: #EFF2EA;
+}
+
+.footer-brand .site-logo:hover {
+  color: var(--color-sage);
 }
 
 .footer-brand p {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: rgba(239, 242, 234, 0.62);
   max-width: 28ch;
 }
 
@@ -279,10 +288,10 @@ main {
 }
 
 .footer-contacts h4 {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-text-muted);
+  letter-spacing: 0.12em;
+  color: rgba(239, 242, 234, 0.48);
   margin-bottom: var(--space-sm);
 }
 
@@ -294,20 +303,20 @@ main {
 
 .footer-contacts a {
   font-size: 0.95rem;
-  color: var(--color-text);
+  color: rgba(239, 242, 234, 0.80);
   transition: color var(--transition);
 }
 
 .footer-contacts a:hover {
-  color: var(--color-primary);
+  color: var(--color-sage);
 }
 
 .footer-bottom {
   margin-top: var(--space-xl);
   padding-top: var(--space-md);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid rgba(239, 242, 234, 0.12);
   font-size: 0.85rem;
-  color: var(--color-text-muted);
+  color: rgba(239, 242, 234, 0.38);
   text-align: center;
 }
 
@@ -315,7 +324,7 @@ main {
    Page header (inner pages)
    ============================================================ */
 .page-header {
-  background-color: var(--color-surface);
+  background: linear-gradient(150deg, var(--color-surface) 0%, var(--color-bg) 100%);
   border-bottom: 1px solid var(--color-border);
   padding-block: var(--space-2xl);
   text-align: center;
@@ -350,14 +359,19 @@ main {
    ============================================================ */
 .btn {
   display: inline-block;
-  padding: 0.65rem 1.5rem;
-  border-radius: var(--radius-md);
+  padding: 0.7rem 1.6rem;
+  border-radius: 100px;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: background-color var(--transition), color var(--transition), box-shadow var(--transition);
+  letter-spacing: 0.02em;
+  transition: background-color var(--transition), color var(--transition), box-shadow var(--transition), transform var(--transition);
   cursor: pointer;
   border: 2px solid transparent;
   text-align: center;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
 }
 
 .btn-primary {
@@ -423,7 +437,9 @@ main {
     top: 4rem;
     left: 0;
     right: 0;
-    background-color: var(--color-bg);
+    background-color: rgba(239, 242, 234, 0.97);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-border);
     box-shadow: var(--shadow-md);
     z-index: 99;
@@ -479,9 +495,9 @@ main {
   background-color: var(--color-primary);
   background-image: linear-gradient(
     135deg,
-    #1e2210 0%,
-    #373D20 45%,
-    #717744 100%
+    #0c1c07 0%,
+    #2D4A1E 50%,
+    #5A7A3A 100%
   );
   overflow: hidden;
   color: var(--color-white);
@@ -504,10 +520,10 @@ main {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    100deg,
-    rgba(55, 61, 32, 0.84) 0%,
-    rgba(55, 61, 32, 0.55) 55%,
-    rgba(55, 61, 32, 0.18) 100%
+    110deg,
+    rgba(12, 28, 7, 0.88) 0%,
+    rgba(45, 74, 30, 0.58) 55%,
+    rgba(90, 122, 58, 0.15) 100%
   );
 }
 
@@ -522,11 +538,11 @@ main {
 }
 
 .hero-eyebrow {
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--color-accent);
+  letter-spacing: 0.18em;
+  color: #C8A87A;
   margin-bottom: var(--space-md);
 }
 
@@ -550,10 +566,11 @@ main {
   background-color: var(--color-accent);
   color: var(--color-white);
   font-size: 1rem;
-  padding: 0.85rem 2.2rem;
-  border-radius: var(--radius-md);
+  padding: 0.9rem 2.4rem;
+  border-radius: 100px;
   font-weight: 700;
-  transition: background-color var(--transition), box-shadow var(--transition);
+  letter-spacing: 0.02em;
+  transition: background-color var(--transition), box-shadow var(--transition), transform var(--transition);
   display: inline-block;
   border: 2px solid transparent;
 }
@@ -561,6 +578,7 @@ main {
 .hero-cta:hover {
   background-color: var(--color-accent-dark);
   box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 767px) {
@@ -573,9 +591,9 @@ main {
   .hero-overlay {
     background: linear-gradient(
       to top,
-      rgba(55, 61, 32, 0.90) 0%,
-      rgba(55, 61, 32, 0.52) 60%,
-      rgba(55, 61, 32, 0.12) 100%
+      rgba(12, 28, 7, 0.92) 0%,
+      rgba(45, 74, 30, 0.55) 60%,
+      rgba(90, 122, 58, 0.10) 100%
     );
   }
 
@@ -595,9 +613,9 @@ main {
 }
 
 .filter-tab {
-  padding: 0.45rem 1.2rem;
-  border-radius: var(--radius-md);
-  font-size: 0.9rem;
+  padding: 0.45rem 1.25rem;
+  border-radius: 100px;
+  font-size: 0.88rem;
   font-weight: 500;
   color: var(--color-text-muted);
   background: none;
@@ -643,18 +661,20 @@ main {
    Catalog — product card
    ============================================================ */
 .product-card {
-  background-color: var(--color-surface);
+  background-color: var(--color-white);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  transition: box-shadow var(--transition), transform var(--transition);
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
 }
 
 .product-card:hover {
   box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
+  border-color: var(--color-sage);
+  transform: translateY(-4px);
 }
 
 .product-card.is-hidden {
@@ -728,7 +748,7 @@ main {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(55, 61, 32, 0.55);
+  background: rgba(44, 36, 22, 0.60);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -834,7 +854,7 @@ main {
 .form-input:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(55, 61, 32, 0.1);
+  box-shadow: 0 0 0 3px rgba(45, 74, 30, 0.12);
 }
 
 .form-textarea {
@@ -867,11 +887,11 @@ main {
    About — story section
    ============================================================ */
 .about-eyebrow {
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-olive);
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
   margin-bottom: var(--space-md);
 }
 
@@ -921,7 +941,7 @@ main {
    About — craft section
    ============================================================ */
 .about-craft {
-  background-color: var(--color-surface);
+  background: linear-gradient(160deg, var(--color-surface) 0%, #d8e4c8 100%);
   padding-block: var(--space-3xl);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
@@ -944,10 +964,11 @@ main {
 }
 
 .craft-item {
-  background: var(--color-bg);
+  background: var(--color-white);
   border-radius: var(--radius-md);
   padding: var(--space-xl);
-  border-left: 4px solid var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  box-shadow: var(--shadow-sm);
 }
 
 .craft-item__title {
@@ -1040,16 +1061,18 @@ main {
 .post-card {
   display: flex;
   flex-direction: column;
-  background: var(--color-surface);
+  background: var(--color-white);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition), transform var(--transition);
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
 }
 
 .post-card:hover {
   box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
+  border-color: var(--color-sage);
+  transform: translateY(-4px);
 }
 
 /* Card image — top of card, fixed aspect ratio */
