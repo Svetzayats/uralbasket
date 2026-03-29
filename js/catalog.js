@@ -101,6 +101,14 @@ function initFilter(products) {
       });
     });
   });
+
+  // Pre-select category from URL query param, e.g. /catalog.html?category=baskets
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get('category');
+  if (cat) {
+    const tab = [...tabs].find((t) => t.dataset.filter === cat);
+    if (tab) tab.click();
+  }
 }
 
 /* ------------------------------------------------------------------
