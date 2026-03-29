@@ -1,0 +1,462 @@
+/* ============================================================
+   Design Tokens
+   ============================================================ */
+:root {
+  /* Colors */
+  --color-bg:           #faf6f1;
+  --color-surface:      #f2e8d9;
+  --color-surface-alt:  #e8ddd0;
+  --color-primary:      #7c5230;
+  --color-primary-dark: #6a4428;
+  --color-accent:       #b87040;
+  --color-text:         #2e241a;
+  --color-text-muted:   #6b5a4a;
+  --color-border:       #ddd0be;
+  --color-white:        #ffffff;
+
+  /* Typography */
+  --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body:    'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Spacing scale */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 5rem;
+
+  /* Layout */
+  --container-max:     1160px;
+  --container-padding: 1.25rem;
+
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 4px rgba(46, 36, 26, 0.08);
+  --shadow-md: 0 4px 16px rgba(46, 36, 26, 0.10);
+  --shadow-lg: 0 8px 32px rgba(46, 36, 26, 0.14);
+
+  /* Transitions */
+  --transition: 0.2s ease;
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ============================================================
+   Typography
+   ============================================================ */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); }
+h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
+h4 { font-size: 1.1rem; }
+
+p {
+  margin-bottom: var(--space-md);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.section {
+  padding-block: var(--space-3xl);
+}
+
+.section--sm {
+  padding-block: var(--space-2xl);
+}
+
+main {
+  flex: 1;
+}
+
+/* ============================================================
+   Header & Navigation
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  height: 4rem;
+}
+
+/* Logo */
+.site-logo {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color var(--transition);
+}
+
+.site-logo:hover {
+  color: var(--color-accent);
+}
+
+/* Nav list */
+.site-nav ul {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.site-nav a {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background-color var(--transition);
+}
+
+.site-nav a:hover,
+.site-nav a.is-active {
+  color: var(--color-primary);
+  background-color: var(--color-surface);
+}
+
+.site-nav a.is-active {
+  font-weight: 600;
+}
+
+/* Hamburger button */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.4rem;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition);
+  flex-shrink: 0;
+}
+
+.nav-toggle:hover {
+  background-color: var(--color-surface);
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition), width var(--transition);
+  transform-origin: center;
+}
+
+/* Hamburger → X animation */
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.site-footer {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-2xl);
+  margin-top: auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: var(--space-xl);
+}
+
+.footer-brand .site-logo {
+  display: inline-block;
+  margin-bottom: var(--space-sm);
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  max-width: 28ch;
+}
+
+.footer-contacts {
+  text-align: right;
+}
+
+.footer-contacts h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-contacts ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.footer-contacts a {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  transition: color var(--transition);
+}
+
+.footer-contacts a:hover {
+  color: var(--color-primary);
+}
+
+.footer-bottom {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* ============================================================
+   Page header (inner pages)
+   ============================================================ */
+.page-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--space-2xl);
+  text-align: center;
+}
+
+.page-header h1 {
+  margin-bottom: var(--space-sm);
+}
+
+.page-header p {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  max-width: 52ch;
+  margin-inline: auto;
+}
+
+/* ============================================================
+   Placeholder section (used during construction)
+   ============================================================ */
+.placeholder-section {
+  padding-block: var(--space-3xl);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.placeholder-section p {
+  font-size: 1.05rem;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color var(--transition), color var(--transition), box-shadow var(--transition);
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+.text-muted    { color: var(--color-text-muted); }
+.text-center   { text-align: center; }
+.text-small    { font-size: 0.875rem; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================================
+   Responsive — Tablet (≥ 640px)
+   ============================================================ */
+@media (min-width: 640px) {
+  :root {
+    --container-padding: 1.5rem;
+  }
+}
+
+/* ============================================================
+   Responsive — Mobile (< 768px) — Nav collapse
+   ============================================================ */
+@media (max-width: 767px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    z-index: 99;
+  }
+
+  .site-nav.is-open {
+    display: block;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: var(--space-md);
+  }
+
+  .site-nav ul li {
+    width: 100%;
+  }
+
+  .site-nav a {
+    display: block;
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-contacts {
+    text-align: left;
+  }
+}
+
+/* ============================================================
+   Responsive — Desktop (≥ 1024px)
+   ============================================================ */
+@media (min-width: 1024px) {
+  :root {
+    --container-padding: 2rem;
+  }
+}
