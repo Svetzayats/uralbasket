@@ -42,12 +42,28 @@
       </div>
     </div>
 
-    <!-- Catalog content — Phase 3 -->
-    <div class="placeholder-section">
+    <!-- ==================== CATALOG ==================== -->
+    <section class="catalog-section section">
       <div class="container">
-        <p>Товары и фильтр по категориям — Phase 3</p>
+
+        <!-- Category filter tabs -->
+        <div class="filter-tabs" role="tablist" aria-label="Категории товаров">
+          <button class="filter-tab is-active" data-filter="all"       role="tab" aria-selected="true">Все</button>
+          <button class="filter-tab"            data-filter="baskets"  role="tab" aria-selected="false">Корзины</button>
+          <button class="filter-tab"            data-filter="decor"    role="tab" aria-selected="false">Декор</button>
+          <button class="filter-tab"            data-filter="furniture"role="tab" aria-selected="false">Мебель</button>
+        </div>
+
+        <!-- Product grid -->
+        <!--
+          Each card has data-category matching a filter tab value.
+          To make an item display-only (not orderable), simply omit the <button class="order-btn"> element.
+          Placeholder images: place photos in /images/products/ with matching filenames.
+        -->
+        <!-- Cards are rendered by /js/catalog.js from /data/products.json -->
+        <div class="product-grid" id="product-grid"></div>
       </div>
-    </div>
+    </section>
 
   </main>
 
@@ -74,5 +90,6 @@
   </footer>
 
   <script src="/js/main.js"></script>
+  <script src="/js/catalog.js"></script>
 </body>
 </html>

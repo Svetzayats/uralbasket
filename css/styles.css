@@ -580,3 +580,141 @@ main {
     max-width: 100%;
   }
 }
+
+/* ============================================================
+   Catalog — filter tabs
+   ============================================================ */
+.filter-tabs {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2xl);
+}
+
+.filter-tab {
+  padding: 0.45rem 1.2rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: none;
+  border: 1.5px solid var(--color-border);
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition),
+              background-color var(--transition);
+}
+
+.filter-tab:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filter-tab.is-active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ============================================================
+   Catalog — product grid
+   ============================================================ */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 580px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================================
+   Catalog — product card
+   ============================================================ */
+.product-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.product-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.product-card.is-hidden {
+  display: none;
+}
+
+/* Image area — fixed aspect ratio with sage fallback colour */
+.product-img-wrap {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--color-surface-alt);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+  /* hides broken-image icon while photo is missing */
+  color: transparent;
+}
+
+.product-img-wrap:hover .product-img {
+  transform: scale(1.05);
+}
+
+/* Card body */
+.product-body {
+  padding: var(--space-lg);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.product-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  line-height: 1.3;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.product-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  flex: 1;
+  margin: 0;
+}
+
+.order-btn {
+  align-self: flex-start;
+  margin-top: var(--space-sm);
+  font-size: 0.88rem;
+  padding: 0.5rem 1.2rem;
+}
+
+.catalog-error {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: var(--space-2xl) 0;
+}

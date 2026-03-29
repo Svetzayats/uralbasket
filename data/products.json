@@ -1,0 +1,66 @@
+[
+  {
+    "id":          "basket-picnic",
+    "name":        "Корзина для пикника",
+    "category":    "baskets",
+    "image":       "basket-picnic.jpg",
+    "description": "Вместительная плетёная корзина с удобными ручками. Подходит для прогулок и отдыха на природе.",
+    "orderable":   true
+  },
+  {
+    "id":          "basket-bread",
+    "name":        "Хлебница плетёная",
+    "category":    "baskets",
+    "image":       "basket-bread.jpg",
+    "description": "Традиционная хлебница из лозы — хранит хлеб свежим и украшает стол натуральной фактурой.",
+    "orderable":   true
+  },
+  {
+    "id":          "basket-laundry",
+    "name":        "Корзина для белья",
+    "category":    "baskets",
+    "image":       "basket-laundry.jpg",
+    "description": "Просторная корзина для белья с крышкой. Образец мастерства — продана, представлена как пример работы.",
+    "orderable":   false
+  },
+  {
+    "id":          "decor-wreath",
+    "name":        "Венок декоративный",
+    "category":    "decor",
+    "image":       "decor-wreath.jpg",
+    "description": "Плетёный венок из лозы для украшения интерьера или входной двери. Изготавливается под заказ любого размера.",
+    "orderable":   true
+  },
+  {
+    "id":          "decor-stand",
+    "name":        "Подставка под горшок",
+    "category":    "decor",
+    "image":       "decor-stand.jpg",
+    "description": "Аккуратная плетёная подставка под цветочный горшок. Добавляет тепла и уюта любому подоконнику.",
+    "orderable":   true
+  },
+  {
+    "id":          "decor-panel",
+    "name":        "Панно из лозы",
+    "category":    "decor",
+    "image":       "decor-panel.jpg",
+    "description": "Авторское настенное панно ручной работы. Единственный экземпляр, представлен как пример декоративных возможностей лозы.",
+    "orderable":   false
+  },
+  {
+    "id":          "furniture-shelf",
+    "name":        "Полочка настенная",
+    "category":    "furniture",
+    "image":       "furniture-shelf.jpg",
+    "description": "Лёгкая настенная полочка с плетёным фасадом. Органично вписывается в экостиль и скандинавский интерьер.",
+    "orderable":   true
+  },
+  {
+    "id":          "furniture-etagere",
+    "name":        "Этажерка плетёная",
+    "category":    "furniture",
+    "image":       "furniture-etagere.jpg",
+    "description": "Трёхъярусная этажерка из лозы и дерева. Выставочный образец, принят в частную коллекцию.",
+    "orderable":   false
+  }
+]
