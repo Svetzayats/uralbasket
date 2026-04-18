@@ -1,0 +1,37 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  date: string;
+  dateFormatted: string;
+  coverImage?: string;
+  coverAlt?: string;
+}
+
+const { title, description, date, dateFormatted, coverImage, coverAlt } = Astro.props;
+---
+
+<BaseLayout title={`${title} — Мастера лозы`} description={description}>
+  <article class="article-page section">
+    <div class="container article-container">
+      <header class="article-header">
+        <a href="/blog/" class="article-back">← Блог</a>
+        <time class="post-date" datetime={date}>{dateFormatted}</time>
+        <h1 class="article-title">{title}</h1>
+      </header>
+      {coverImage && (
+        <div class="article-cover-wrap">
+          <img src={coverImage} alt={coverAlt ?? ''} class="article-cover" />
+        </div>
+      )}
+      <div class="prose">
+        <slot />
+      </div>
+      <footer class="article-footer">
+        <a href="/blog/" class="article-back">← Вернуться к блогу</a>
+      </footer>
+    </div>
+  </article>
+</BaseLayout>

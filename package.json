@@ -1,0 +1,12 @@
+{
+  "name": "uralbasket",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^6.1.7"
+  }
+}

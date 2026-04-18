@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Каталог — Мастера лозы"
+  description="Каталог изделий ручной работы из лозы: корзины, декор, элементы мебели."
+  headExtra='<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />'
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>Каталог</h1>
+      <p>Изделия ручной работы из лозы</p>
+    </div>
+  </div>
+
+  <section class="catalog-section section">
+    <div class="container">
+      <div class="filter-tabs" role="tablist" aria-label="Категории товаров">
+        <button class="filter-tab is-active" data-filter="all" role="tab" aria-selected="true">Все</button>
+        <button class="filter-tab" data-filter="baskets" role="tab" aria-selected="false">Корзины</button>
+        <button class="filter-tab" data-filter="chests" role="tab" aria-selected="false">Сундуки и короба</button>
+        <button class="filter-tab" data-filter="decor" role="tab" aria-selected="false">Интерьер и дизайн</button>
+        <button class="filter-tab" data-filter="display_equipment" role="tab" aria-selected="false">Торговое оборудование</button>
+        <button class="filter-tab" data-filter="cribs" role="tab" aria-selected="false">Колыбели и люльки</button>
+      </div>
+      <div class="product-grid" id="product-grid"></div>
+    </div>
+  </section>
+
+  <div class="modal-backdrop" id="order-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Закрыть">&times;</button>
+      <h2 class="modal-title" id="modal-title">Оформить заказ</h2>
+
+      <form class="order-form" id="order-form" action="https://formspree.io/f/meepandz" method="POST">
+        <input type="hidden" name="product" id="order-product" />
+
+        <div class="form-field">
+          <label class="form-label" for="order-name">
+            Имя <span class="form-required" aria-hidden="true">*</span>
+          </label>
+          <input class="form-input" type="text" id="order-name" name="name" required autocomplete="name" placeholder="Ваше имя" />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="order-phone">
+            Телефон <span class="form-required" aria-hidden="true">*</span>
+          </label>
+          <input class="form-input" type="tel" id="order-phone" name="phone" required autocomplete="tel" placeholder="+7 (000) 000-00-00" />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="order-email">Email</label>
+          <input class="form-input" type="email" id="order-email" name="email" autocomplete="email" placeholder="example@mail.ru" />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="order-comment">Комментарий</label>
+          <textarea class="form-input form-textarea" id="order-comment" name="comment" rows="3" placeholder="Размер, цвет, пожелания..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary form-submit">Отправить заявку</button>
+      </form>
+
+      <div class="order-success" id="order-success" hidden>
+        <p>Спасибо за заявку!<br />Мы свяжемся с вами в ближайшее время.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js" is:inline></script>
+  <script src="/js/catalog.js" is:inline></script>
+</BaseLayout>

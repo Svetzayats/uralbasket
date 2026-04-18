@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Мастера лозы — изделия ручной работы из лозы"
+  description="Корзины, декор и элементы мебели ручной работы из лозы. Изготовление на заказ."
+  netlifyIdentity={true}
+>
+  <section class="hero">
+    <img src="/images/hero.jpg" alt="" class="hero-bg" aria-hidden="true" fetchpriority="high" />
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Ручная работа</p>
+        <h1 class="hero-title">Изделия из лозы,<br>сделанные с душой</h1>
+        <p class="hero-subtitle">
+          Корзины, декор и элементы мебели — каждое изделие создаётся
+          вручную из натуральной лозы двумя мастерами из Урала.
+        </p>
+        <a href="/catalog" class="btn hero-cta">Смотреть каталог</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="categories section">
+    <div class="container">
+      <p class="categories-eyebrow">Каталог</p>
+      <h2 class="categories-title">Что мы делаем</h2>
+      <div class="categories-grid">
+
+        <a href="/catalog?category=baskets" class="category-card">
+          <img src="/images/products/basket-picnic.jpg" alt="Корзины из лозы" class="category-card__img" />
+          <div class="category-card__overlay"></div>
+          <div class="category-card__body">
+            <h3 class="category-card__name">Корзины</h3>
+            <p class="category-card__desc">Для пикника, хранения, кухни и дома</p>
+            <span class="category-card__link">Смотреть →</span>
+          </div>
+        </a>
+
+        <a href="/catalog?category=decor" class="category-card">
+          <img src="/images/products/decor-wreath.jpg" alt="Декор из лозы" class="category-card__img" />
+          <div class="category-card__overlay"></div>
+          <div class="category-card__body">
+            <h3 class="category-card__name">Декор</h3>
+            <p class="category-card__desc">Венки, панно, подставки для интерьера</p>
+            <span class="category-card__link">Смотреть →</span>
+          </div>
+        </a>
+
+        <a href="/catalog?category=furniture" class="category-card">
+          <img src="/images/products/furniture-shelf.jpg" alt="Мебель из лозы" class="category-card__img" />
+          <div class="category-card__overlay"></div>
+          <div class="category-card__body">
+            <h3 class="category-card__name">Мебель</h3>
+            <p class="category-card__desc">Полки и этажерки в экостиле</p>
+            <span class="category-card__link">Смотреть →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews section">
+    <div class="container">
+      <p class="reviews-eyebrow">Отзывы</p>
+      <h2 class="reviews-title">Что говорят наши покупатели</h2>
+      <div class="reviews-grid">
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 звёзд из 5">★★★★★</div>
+          <blockquote class="review-text">
+            Заказывала корзину для пикника — пришла быстро, упакована аккуратно.
+            Плетение плотное, ручки удобные, держит форму под весом. Уже
+            съездили на шашлыки, всё отлично.
+          </blockquote>
+          <footer class="review-author">
+            <span class="review-name">Анна К.</span>
+            <span class="review-source">ВКонтакте</span>
+          </footer>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 звёзд из 5">★★★★★</div>
+          <blockquote class="review-text">
+            Взяли декоративную вазу в подарок маме — она в восторге. Видно,
+            что сделано руками: ровное плетение, нет заусенцев, приятный
+            запах дерева. Буду заказывать ещё.
+          </blockquote>
+          <footer class="review-author">
+            <span class="review-name">Дмитрий Р.</span>
+            <span class="review-source">Личное сообщение</span>
+          </footer>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 звёзд из 5">★★★★★</div>
+          <blockquote class="review-text">
+            Оформили мастера-класс — очень понравилось. Никакого снобизма,
+            всё объясняют терпеливо. За три часа сплела небольшую корзинку
+            и была очень горда собой.
+          </blockquote>
+          <footer class="review-author">
+            <span class="review-name">Светлана М.</span>
+            <span class="review-source">Telegram</span>
+          </footer>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 звёзд из 5">★★★★★</div>
+          <blockquote class="review-text">
+            Заказывал полку из лозы под размер ниши — сделали точно по
+            замерам, подогнали цвет. Стоит уже полгода, не рассохлась,
+            не деформировалась.
+          </blockquote>
+          <footer class="review-author">
+            <span class="review-name">Игорь В.</span>
+            <span class="review-source">ВКонтакте</span>
+          </footer>
+        </article>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

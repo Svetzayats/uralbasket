@@ -4,19 +4,19 @@
    Design Tokens
    ============================================================ */
 :root {
-  /* Colors — Warm Forest palette */
-  --color-bg:           #EFF2EA;  /* Pale Meadow */
-  --color-surface:      #E4EAD9;  /* Soft Fern */
-  --color-surface-alt:  #B8C9A3;  /* Sage Green */
-  --color-primary:      #2D4A1E;  /* Deep Forest Green */
-  --color-primary-dark: #1E3313;  /* Forest Green darkened */
-  --color-accent:       #8B5E3C;  /* Warm Clay */
-  --color-accent-dark:  #6E4A2E;  /* Clay darkened */
-  --color-olive:        #5A7A3A;  /* Olive Green */
-  --color-sage:         #93AE7E;  /* Sage */
-  --color-text:         #1E2B14;  /* Dark Forest Brown */
-  --color-text-muted:   #5A6E4A;  /* Muted Olive */
-  --color-border:       #C4D3B0;  /* Soft Green Border */
+  /* Colors */
+  --color-bg:           #ffffff;
+  --color-surface:      #f5f5f5;
+  --color-surface-alt:  #e8e8e8;
+  --color-primary:      #1e441e;
+  --color-primary-dark: #163514;
+  --color-accent:       #ff8562;
+  --color-accent-dark:  #e06b4d;
+  --color-olive:        #4a7a5a;
+  --color-sage:         #7aad8a;
+  --color-text:         #1a1a1a;
+  --color-text-muted:   #666666;
+  --color-border:       #e0e0e0;
   --color-white:        #ffffff;
 
   /* Typography */
@@ -154,10 +154,10 @@ main {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(239, 242, 234, 0.93);
+  background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(196, 211, 176, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: var(--shadow-sm);
 }
 
@@ -254,7 +254,7 @@ main {
    Footer
    ============================================================ */
 .site-footer {
-  background-color: #1E3313;
+  background-color: #1e441e;
   border-top: none;
   padding-block: var(--space-2xl);
   margin-top: auto;
@@ -270,7 +270,7 @@ main {
 .footer-brand .site-logo {
   display: inline-block;
   margin-bottom: var(--space-sm);
-  color: #EFF2EA;
+  color: #ffffff;
 }
 
 .footer-brand .site-logo:hover {
@@ -279,7 +279,7 @@ main {
 
 .footer-brand p {
   font-size: 0.9rem;
-  color: rgba(239, 242, 234, 0.62);
+  color: rgba(255, 255, 255, 0.62);
   max-width: 28ch;
 }
 
@@ -291,7 +291,7 @@ main {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: rgba(239, 242, 234, 0.48);
+  color: rgba(255, 255, 255, 0.48);
   margin-bottom: var(--space-sm);
 }
 
@@ -303,7 +303,7 @@ main {
 
 .footer-contacts a {
   font-size: 0.95rem;
-  color: rgba(239, 242, 234, 0.80);
+  color: rgba(255, 255, 255, 0.80);
   transition: color var(--transition);
 }
 
@@ -311,12 +311,22 @@ main {
   color: var(--color-sage);
 }
 
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.social-link svg {
+  flex-shrink: 0;
+}
+
 .footer-bottom {
   margin-top: var(--space-xl);
   padding-top: var(--space-md);
-  border-top: 1px solid rgba(239, 242, 234, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 0.85rem;
-  color: rgba(239, 242, 234, 0.38);
+  color: rgba(255, 255, 255, 0.38);
   text-align: center;
 }
 
@@ -437,7 +447,7 @@ main {
     top: 4rem;
     left: 0;
     right: 0;
-    background-color: rgba(239, 242, 234, 0.97);
+    background-color: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-border);
@@ -495,9 +505,9 @@ main {
   background-color: var(--color-primary);
   background-image: linear-gradient(
     135deg,
-    #0c1c07 0%,
-    #2D4A1E 50%,
-    #5A7A3A 100%
+    #0a1a0a 0%,
+    #1e441e 50%,
+    #3a7a4a 100%
   );
   overflow: hidden;
   color: var(--color-white);
@@ -521,9 +531,9 @@ main {
   inset: 0;
   background: linear-gradient(
     110deg,
-    rgba(12, 28, 7, 0.88) 0%,
-    rgba(45, 74, 30, 0.58) 55%,
-    rgba(90, 122, 58, 0.15) 100%
+    rgba(10, 26, 10, 0.88) 0%,
+    rgba(30, 68, 30, 0.58) 55%,
+    rgba(58, 122, 74, 0.15) 100%
   );
 }
 
@@ -542,7 +552,7 @@ main {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: #C8A87A;
+  color: #ffb8a0;
   margin-bottom: var(--space-md);
 }
 
@@ -591,9 +601,9 @@ main {
   .hero-overlay {
     background: linear-gradient(
       to top,
-      rgba(12, 28, 7, 0.92) 0%,
-      rgba(45, 74, 30, 0.55) 60%,
-      rgba(90, 122, 58, 0.10) 100%
+      rgba(10, 26, 10, 0.92) 0%,
+      rgba(30, 68, 30, 0.55) 60%,
+      rgba(58, 122, 74, 0.10) 100%
     );
   }
 
@@ -728,6 +738,44 @@ main {
   margin: 0;
 }
 
+.product-price {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: var(--space-sm) 0 0;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.product-price__old {
+  font-weight: 400;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-right: 0.3rem;
+  text-decoration: line-through;
+}
+
+.product-sold-out {
+  display: inline-block;
+  margin-top: var(--space-sm);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.product-card--sold-out .product-img-wrap {
+  opacity: 0.55;
+}
+
+.product-img-extra {
+  display: none;
+}
+
+.product-img-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-sage-light, #e8ede8);
+}
+
 .order-btn {
   align-self: flex-start;
   margin-top: var(--space-sm);
@@ -748,7 +796,7 @@ main {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(44, 36, 22, 0.60);
+  background: rgba(0, 0, 0, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -941,7 +989,7 @@ main {
    About — craft section
    ============================================================ */
 .about-craft {
-  background: linear-gradient(160deg, var(--color-surface) 0%, #d8e4c8 100%);
+  background: linear-gradient(160deg, var(--color-surface) 0%, #eaeaea 100%);
   padding-block: var(--space-3xl);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);

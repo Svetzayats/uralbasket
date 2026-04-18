@@ -15,7 +15,8 @@ async function initCatalog() {
   try {
     const res = await fetch('/data/products.json');
     if (!res.ok) throw new Error(res.statusText);
-    products = await res.json();
+    const data = await res.json();
+    products = Array.isArray(data) ? data : (data.products || []);
   } catch (err) {
     grid.innerHTML = `
       <p class="catalog-error">
@@ -38,30 +39,69 @@ function renderCards(grid, products) {
 }
 
 function cardHTML(product) {
-  const orderBtn = product.orderable
-    ? `<button class="btn btn-primary order-btn"
-               data-product="${esc(product.name)}">Заказать</button>`
-    : '';
+  // Support both old single `image` field and new `images` array
+  const images = (product.images && product.images.length)
+    ? product.images
+    : (product.image ? [product.image] : []);
+
+  const isSoldOut = product.quantity === 0;
+  const galleryId = `gallery-${esc(product.id)}`;
+
+  // Resolve image src: full URLs pass through, filenames get local prefix
+  const imgSrc = (img) => /^https?:\/\//.test(img) ? img : `/images/products/${esc(img)}`;
+
+  const mainLink = images.length
+    ? `<a href="${imgSrc(images[0])}"
+          class="glightbox"
+          data-gallery="${galleryId}"
+          data-title="${esc(product.name)}"
+          aria-label="Увеличить фото: ${esc(product.name)}">
+         <img src="${imgSrc(images[0])}" alt="${esc(product.name)}" class="product-img" />
+       </a>`
+    : `<div class="product-img-placeholder" aria-hidden="true"></div>`;
+
+  // Extra images for the gallery (hidden from layout, visible to GLightbox)
+  const extraLinks = images.slice(1).map(img =>
+    `<a href="${imgSrc(img)}"
+        class="glightbox product-img-extra"
+        data-gallery="${galleryId}"
+        data-title="${esc(product.name)}"
+        aria-hidden="true" tabindex="-1"></a>`
+  ).join('');
+
+  // Price block
+  let priceHTML = '';
+  if (product.price) {
+    const oldPriceHTML = product.price_old
+      ? `<s class="product-price__old">${product.price_old.toLocaleString('ru-RU')} ₽</s> `
+      : '';
+    priceHTML = `<p class="product-price">${oldPriceHTML}<strong>${product.price.toLocaleString('ru-RU')} ₽</strong></p>`;
+  }
+
+  let orderBtn = '';
+  if (isSoldOut) {
+    orderBtn = `<span class="product-sold-out">Нет в наличии</span>`;
+  } else if (product.orderable) {
+    orderBtn = `<button class="btn btn-primary order-btn"
+                        data-product="${esc(product.name)}">Заказать</button>`;
+  }
+
+  // Support both old single `category` and new `categories` array
+  const categoryList = Array.isArray(product.categories)
+    ? product.categories.join(' ')
+    : (product.category || '');
 
   return `
-    <article class="product-card" data-category="${esc(product.category)}" data-id="${esc(product.id)}">
+    <article class="product-card${isSoldOut ? ' product-card--sold-out' : ''}"
+             data-categories="${esc(categoryList)}"
+             data-id="${esc(product.id)}">
       <div class="product-img-wrap">
-        <a
-          href="/images/products/${esc(product.image)}"
-          class="glightbox"
-          data-title="${esc(product.name)}"
-          aria-label="Увеличить фото: ${esc(product.name)}"
-        >
-          <img
-            src="/images/products/${esc(product.image)}"
-            alt="${esc(product.name)}"
-            class="product-img"
-          />
-        </a>
+        ${mainLink}${extraLinks}
       </div>
       <div class="product-body">
         <h3 class="product-name">${esc(product.name)}</h3>
         <p class="product-desc">${esc(product.description)}</p>
+        ${priceHTML}
         ${orderBtn}
       </div>
     </article>`;
@@ -96,13 +136,14 @@ function initFilter(products) {
       });
 
       document.querySelectorAll('.product-card').forEach((card) => {
-        const visible = filter === 'all' || card.dataset.category === filter;
+        const cardCats = (card.dataset.categories || '').split(' ');
+        const visible = filter === 'all' || cardCats.includes(filter);
         card.classList.toggle('is-hidden', !visible);
       });
     });
   });
 
-  // Pre-select category from URL query param, e.g. /catalog.html?category=baskets
+  // Pre-select category from URL query param, e.g. /catalog.html?category=cribs
   const params = new URLSearchParams(window.location.search);
   const cat = params.get('category');
   if (cat) {

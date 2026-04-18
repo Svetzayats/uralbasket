@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="О нас — Мастера лозы"
+  description="Узнайте о мастерах лозоплетения, их истории и работах."
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>О нас</h1>
+      <p>История двух мастеров и их любви к лозоплетению</p>
+    </div>
+  </div>
+
+  <section class="about-story section">
+    <div class="container">
+      <div class="about-story-grid">
+        <div class="about-story-text">
+          <p class="about-eyebrow">Наша история</p>
+          <h2>Два мастера.<br />Одно ремесло.</h2>
+          <p>
+            Мы — два мастера из Урала, влюблённых в лозоплетение. Каждое изделие
+            создаётся вручную, от заготовки лозы до финальной отделки. Нам важно,
+            чтобы вещи, которые мы делаем, служили долго и приносили радость.
+          </p>
+          <p>
+            Лозоплетением мы занимаемся уже более 30 лет. За это время освоили
+            десятки техник — от традиционных уральских плетений до авторских решений
+            для современного интерьера.
+          </p>
+          <a href="/catalog" class="btn btn-primary about-cta">Смотреть каталог</a>
+        </div>
+        <div class="about-photo-wrap">
+          <img src="/images/about-masters.jpg" alt="Мастера за работой" class="about-photo" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-craft">
+    <div class="container">
+      <h2 class="text-center about-craft-title">Что мы создаём</h2>
+      <div class="craft-grid">
+        <div class="craft-item">
+          <h3 class="craft-item__title">Корзины</h3>
+          <p class="craft-item__desc">
+            Корзины для пикника, хлеба, белья, хранения — в любом размере и с любыми
+            ручками. Самый популярный вид наших изделий.
+          </p>
+        </div>
+        <div class="craft-item">
+          <h3 class="craft-item__title">Декор</h3>
+          <p class="craft-item__desc">
+            Венки, подставки, панно, вазы — украшения для дома и дачи, которые привносят
+            тепло натуральных материалов в интерьер.
+          </p>
+        </div>
+        <div class="craft-item">
+          <h3 class="craft-item__title">Элементы мебели</h3>
+          <p class="craft-item__desc">
+            Полочки, этажерки, плетёные фасады для шкафов и тумбочек. Изготавливаем
+            под размер и под стиль вашего интерьера.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-contacts section" id="contacts">
+    <div class="container">
+      <div class="contacts-grid">
+        <div>
+          <h2>Свяжитесь с нами</h2>
+          <p class="contacts-sub">
+            Готовы ответить на вопросы, обсудить заказ или рассказать подробнее
+            о конкретном изделии.
+          </p>
+        </div>
+        <ul class="contacts-list">
+          <li class="contacts-item">
+            <span class="contacts-label">Телефон</span>
+            <a href="tel:+79920109410" class="contacts-link">+7 (992) 010-94-10</a>
+          </li>
+          <li class="contacts-item">
+            <span class="contacts-label">Email</span>
+            <a href="mailto:uralbasket@mail.ru" class="contacts-link">uralbasket@mail.ru</a>
+          </li>
+          <li class="contacts-item">
+            <span class="contacts-label">ВКонтакте</span>
+            <a href="https://vk.ru/uralbasket" target="_blank" rel="noopener" class="contacts-link">vk.com/uralbasket</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

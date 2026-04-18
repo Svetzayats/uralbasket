@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = [
+  {
+    slug: 'kak-nachat-lozopletenie',
+    date: '2025-03-15',
+    dateFormatted: '15 марта 2025',
+    title: 'Как начать лозоплетение: советы для начинающих',
+    summary: 'Лозоплетение кажется сложным только поначалу. Рассказываем, с каких инструментов и материалов начать, где брать лозу и какое первое изделие выбрать для тренировки.',
+    image: '/images/blog/kak-nachat-lozopletenie.jpg',
+    imageAlt: 'Как начать лозоплетение',
+  },
+  {
+    slug: 'korziny-dlya-piknika',
+    date: '2025-02-20',
+    dateFormatted: '20 февраля 2025',
+    title: 'Корзины для пикника: на что обратить внимание при выборе',
+    summary: 'Размер, форма, тип ручек, наличие крышки — разбираем все параметры, которые влияют на удобство корзины для отдыха на природе, и объясняем, как не ошибиться с выбором.',
+    image: '/images/blog/korziny-dlya-piknika.jpg',
+    imageAlt: 'Корзины для пикника',
+  },
+  {
+    slug: 'loza-material-kotoryj-zhivyot',
+    date: '2025-01-10',
+    dateFormatted: '10 января 2025',
+    title: 'Лоза: материал, который живёт',
+    summary: 'Почему мы выбрали именно лозу и ни разу не пожалели об этом. Рассказываем о свойствах материала, его заготовке и о том, почему изделия из лозы служат десятилетиями.',
+    image: '/images/blog/loza-material-kotoryj-zhivyot.jpg',
+    imageAlt: 'Лоза как материал',
+  },
+  {
+    slug: 'materialy-dlya-pleteniya',
+    date: '2024-09-10',
+    dateFormatted: '10 сентября 2024',
+    title: 'Лоза, ротанг, бумага — в чём разница?',
+    summary: 'Сравниваем четыре популярных материала для плетения: ивовый прут, натуральный ротанг, искусственный ротанг и бумажную лозу. У каждого — свой характер, свои плюсы и ниша применения.',
+    image: '/images/blog/materialy-dlya-pleteniya.jpg',
+    imageAlt: 'Материалы для плетения',
+  },
+  {
+    slug: 'korzinka-sumka-na-leto',
+    date: '2024-06-15',
+    dateFormatted: '15 июня 2024',
+    title: 'Корзинка — лучшая сумка на лето',
+    summary: 'О моде на плетёные корзины-сумки: от Джейн Биркин до подиумов сегодняшнего дня. Почему натуральная корзинка удобнее и интереснее любой сумки из масс-маркета.',
+    image: '/images/blog/korzinka-sumka-na-leto.jpg',
+    imageAlt: 'Плетёная корзина как летняя сумка',
+  },
+  {
+    slug: 'iz-chego-sdelany-korziny',
+    date: '2024-04-20',
+    dateFormatted: '20 апреля 2024',
+    title: 'Из чего сделаны наши корзины?',
+    summary: 'Почему мы выбрали ивовый прут, чем цельный прут отличается от ленты и откуда берём лозу — рассказываем честно и подробно.',
+    image: '/images/blog/iz-chego-sdelany-korziny.jpg',
+    imageAlt: 'Ивовый прут — основа наших корзин',
+  },
+  {
+    slug: 'pletennye-lyulki',
+    date: '2024-02-05',
+    dateFormatted: '5 февраля 2024',
+    title: 'Плетёные люльки: чем хороши и как заказать',
+    summary: 'Натуральность, прочность, красота и индивидуальный размер — объясняем, почему родители выбирают плетёные колыбели и что важно учесть при оформлении заказа.',
+    image: '/images/blog/pletennye-lyulki.jpg',
+    imageAlt: 'Плетёная колыбель из лозы',
+  },
+];
+---
+
+<BaseLayout
+  title="Блог — Мастера лозы"
+  description="Статьи о лозоплетении, работах мастеров и жизни ремесла."
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>Блог</h1>
+      <p>Статьи о лозоплетении, наших работах и ремесле</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="post-list">
+        {posts.map((post) => (
+          <article class="post-card">
+            <a href={`/blog/${post.slug}`} class="post-card-img-link" tabindex="-1">
+              <div class="post-card-img-wrap">
+                <img src={post.image} alt={post.imageAlt} class="post-card-img" />
+              </div>
+            </a>
+            <div class="post-card-body">
+              <time class="post-date" datetime={post.date}>{post.dateFormatted}</time>
+              <h2 class="post-title">
+                <a href={`/blog/${post.slug}`}>{post.title}</a>
+              </h2>
+              <p class="post-summary">{post.summary}</p>
+              <a href={`/blog/${post.slug}`} class="post-read-more">Читать далее →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
